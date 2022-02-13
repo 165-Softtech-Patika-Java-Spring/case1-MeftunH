@@ -5,6 +5,10 @@ import utlities.TypeUtility;
 import java.util.Scanner;
 
 public class Main {
+    /**
+     * Main method
+     * @param args
+     */
     public static void main(String[] args) {
         HouseService houseService = new HouseService();
         printTotalPrice("homes", houseService.getTotalPriceOfHomes().toPlainString());
@@ -39,9 +43,20 @@ public class Main {
         System.out.println(houseService.getHomesByFilter(roomFilter, saloonFilter));
     }
 
+    /**
+     *  Prints the total price of all houses
+     * @param typeOfHouse
+     * @param result
+     */
     private static void printTotalPrice(String typeOfHouse, String result){
         System.out.println("Total price of " +typeOfHouse +" is: " + result);
     }
+
+    /**
+     *  Prints the average square meters of all houses
+     * @param typeOfHouse
+     * @param result
+     */
     private static void printAverageSquareMeters(String typeOfHouse, String result){
         System.out.println("Average square meters of " +typeOfHouse +" is: " + result);
     }

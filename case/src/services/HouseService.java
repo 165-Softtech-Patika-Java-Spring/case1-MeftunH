@@ -20,11 +20,16 @@ import java.util.stream.Stream;
 public class HouseService implements HouseServiceInterface {
 
     private int countOfHouseTypes = 3;
+
     protected TypeUtilityInterface typeUtility;
     public HouseService() {
         this.typeUtility = new TypeUtility();
     }
 
+    /**
+     * get total price of all type homes
+     * @return
+     */
     public BigDecimal getTotalPriceOfHomes(){
         List<Home> homeList = this.typeUtility.getHomeList();
         BigDecimal sum = BigDecimal.valueOf(0);
@@ -34,6 +39,11 @@ public class HouseService implements HouseServiceInterface {
         }
        return sum;
     }
+
+    /**
+     * get total price of all type villas
+     * @return
+     */
     public BigDecimal getTotalPriceOfVillas(){
         List<Villa> villaList = this.typeUtility.getVillaList();
         BigDecimal sum = BigDecimal.valueOf(0);
@@ -43,6 +53,11 @@ public class HouseService implements HouseServiceInterface {
         }
         return sum;
     }
+
+    /**
+     * get total price of all type resorts
+     * @return
+     */
     public BigDecimal getTotalPriceOfResorts(){
         List<Resort> resortList = this.typeUtility.getResortList();
         BigDecimal sum = BigDecimal.valueOf(0);
@@ -52,30 +67,55 @@ public class HouseService implements HouseServiceInterface {
         }
         return sum;
     }
+
+    /**
+     * get total price of all type houses
+     * @return
+     */
     public BigDecimal getTotalPriceOfAllTypeHouses(){
         BigDecimal sum = BigDecimal.valueOf(0).add(getTotalPriceOfResorts())
                                               .add(getTotalPriceOfVillas())
                                               .add(getTotalPriceOfHomes());
         return sum;
     }
+
+    /**
+     * get average price of all type houses
+     * @return
+     */
     public OptionalDouble getAverageSquareMetersOfHomes(){
         List<Home> homeList = this.typeUtility.getHomeList();
         OptionalDouble average = OptionalDouble.of(homeList.stream().filter(o -> o.getSquareMeters() > 0)
                 .mapToDouble(o -> o.getSquareMeters()).average().orElse(0));
         return average;
     }
+
+    /**
+     * get average price of all type houses
+     * @return
+     */
     public OptionalDouble getAverageSquareMetersOfVillas(){
         List<Villa> villaList = this.typeUtility.getVillaList();
         OptionalDouble average = OptionalDouble.of(villaList.stream().filter(o -> o.getSquareMeters() > 0)
                 .mapToDouble(o -> o.getSquareMeters()).average().orElse(0));
         return average;
     }
+
+    /**
+     *  get average area of resorts
+     * @return
+     */
     public OptionalDouble getAverageSquareMetersOfResorts(){
         List<Resort> resortList = this.typeUtility.getResortList();
         OptionalDouble average = OptionalDouble.of(resortList.stream().filter(o -> o.getSquareMeters() > 0)
                 .mapToDouble(o -> o.getSquareMeters()).average().orElse(0));
         return average;
     }
+
+    /**
+     *  get average area of houses
+     * @return
+     */
     public OptionalDouble getAverageSquareMetersOfAllTypeHouses(){
         OptionalDouble average = OptionalDouble.of((getAverageSquareMetersOfHomes().getAsDouble() +
                                                    getAverageSquareMetersOfVillas().getAsDouble() +
@@ -83,6 +123,13 @@ public class HouseService implements HouseServiceInterface {
 
         return average;
     }
+
+    /**
+     * get homes by filtering
+     * @param roomNumber
+     * @param saloonNumber
+     * @return
+     */
     public List<House> getHomesByFilter(int roomNumber, int saloonNumber){
         List<House> houses = this.typeUtility.getHouseList();
 
