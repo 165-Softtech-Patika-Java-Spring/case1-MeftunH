@@ -5,6 +5,7 @@ import data.House;
 import data.Resort;
 import data.Villa;
 import utlities.TypeUtility;
+import utlities.TypeUtilityInterface;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,10 +13,10 @@ import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class HouseService {
+public class HouseService implements HouseServiceInterface {
 
     private int countOfHouseTypes = 3;
-    protected TypeUtility typeUtility;
+    protected TypeUtilityInterface typeUtility;
     public HouseService() {
         this.typeUtility = new TypeUtility();
     }

@@ -18,11 +18,23 @@ public class Main {
         printAverageSquareMeters("all type houses", houseService.getAverageSquareMetersOfAllTypeHouses().toString());
 
         System.out.println("--------------Filter by Room and Saloon Number--------------");
-        Scanner keyboard = new Scanner(System.in);
         System.out.println("enter a room number");
-        int roomFilter = keyboard.nextInt();
+        boolean validInput;
+        Scanner input = null;
+
+        do {
+            validInput = true;
+            try {
+                 input = new Scanner(System.in);
+            } catch (NumberFormatException ex) {
+                validInput = false;
+                System.out.println("Please enter a number.");
+            }
+        } while (!validInput);
+
+        int roomFilter = input.nextInt();
         System.out.println("enter a saloon number");
-        int saloonFilter = keyboard.nextInt();
+        int saloonFilter = input.nextInt();
         System.out.println("--------------Here's your results--------------");
         System.out.println(houseService.getHomesByFilter(roomFilter, saloonFilter));
     }

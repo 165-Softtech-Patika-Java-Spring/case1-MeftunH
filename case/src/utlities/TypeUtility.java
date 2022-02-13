@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TypeUtility {
+public class TypeUtility implements TypeUtilityInterface{
 
     public List<House> getHouseList(){
         List<House> houseList = new ArrayList<>();
