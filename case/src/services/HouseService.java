@@ -13,6 +13,10 @@ import java.util.OptionalDouble;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ *  house service
+ *
+ */
 public class HouseService implements HouseServiceInterface {
 
     private int countOfHouseTypes = 3;

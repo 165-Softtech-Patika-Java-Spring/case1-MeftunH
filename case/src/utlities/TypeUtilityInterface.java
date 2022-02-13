@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface TypeUtilityInterface {
-    public List<House> getHouseList();
-    public List<Home> getHomeList();
-    public List<Villa> getVillaList();
-    public List<Resort> getResortList();
+     List<House> getHouseList();
+     List<Home> getHomeList();
+     List<Villa> getVillaList();
+     List<Resort> getResortList();
     private Home createHome(BigDecimal price, int squareMeters, int rooms, int saloonNumber) {
         return null;
     }
