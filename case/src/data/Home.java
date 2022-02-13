@@ -57,4 +57,12 @@ public class Home extends House{
     public void setSaloonNumber(int saloonNumber) {
         super.setSaloonNumber(saloonNumber);
     }
+
+    @Override
+    public String toString() {
+        return ("\n" + "Price: "+this.getPrice()+
+                " Room Number "+ this.getRoomNumber() +
+                " Area "+ this.getSquareMeters() +
+                " Saloon Number : " + this.getSaloonNumber());
+    }
 }

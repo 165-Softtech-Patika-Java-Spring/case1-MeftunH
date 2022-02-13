@@ -24,8 +24,7 @@ public class Main {
         System.out.println("enter a saloon number");
         int saloonFilter = keyboard.nextInt();
         System.out.println("--------------Here's your results--------------");
-        houseService.getHomesByFilter(roomFilter, saloonFilter);
-
+        System.out.println(houseService.getHomesByFilter(roomFilter, saloonFilter));
     }
 
     private static void printTotalPrice(String typeOfHouse, String result){

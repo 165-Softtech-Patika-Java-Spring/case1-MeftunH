@@ -47,4 +47,12 @@ public class House {
     public void setSaloonNumber(int saloonNumber) {
         this.saloonNumber = saloonNumber;
     }
+
+    @Override
+    public String toString() {
+        return ("\n" + "Price:"+this.getPrice()+
+                " Room Number "+ this.getRoomNumber() +
+                " Area "+ this.getSquareMeters() +
+                " Saloon Number : " + this.getSaloonNumber());
+    }
 }

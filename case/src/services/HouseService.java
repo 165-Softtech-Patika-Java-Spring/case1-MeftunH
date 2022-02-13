@@ -7,13 +7,14 @@ import data.Villa;
 import utlities.TypeUtility;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.OptionalDouble;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HouseService {
 
-    private int count_of_house_types = 3;
+    private int countOfHouseTypes = 3;
     protected TypeUtility typeUtility;
     public HouseService() {
         this.typeUtility = new TypeUtility();
@@ -73,20 +74,18 @@ public class HouseService {
     public OptionalDouble getAverageSquareMetersOfAllTypeHouses(){
         OptionalDouble average = OptionalDouble.of((getAverageSquareMetersOfHomes().getAsDouble() +
                                                    getAverageSquareMetersOfVillas().getAsDouble() +
-                                                   getAverageSquareMetersOfResorts().getAsDouble()) / count_of_house_types );
+                                                   getAverageSquareMetersOfResorts().getAsDouble()) / countOfHouseTypes );
 
         return average;
     }
     public List<House> getHomesByFilter(int roomNumber, int saloonNumber){
+        List<House> houses = this.typeUtility.getHouseList();
 
-        List<House> houseList = this.typeUtility.getHouseList();
-        List<House> result = this.typeUtility.getHouseList();
-
-
+        List<House> result = houses.stream().filter(o -> o.getRoomNumber() == roomNumber && o.getSaloonNumber() == saloonNumber)
+                .collect(Collectors.toList());
         if (result.isEmpty()) {
             throw new IllegalArgumentException("There is no house with this room number and saloon number");
         };
-        System.out.println(houseList.toString());
         return result;
     }
 
